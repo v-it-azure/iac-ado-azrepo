@@ -85,7 +85,7 @@ resource "azuredevops_build_definition" "pipeline_1" {
 
   repository {
     repo_type             = "TfsGit"
-    repo_id               = var.ado_github_repo
+    repo_id               = azuredevops_git_repository.existing_repo.id
     branch_name           = "main"
     yml_path              = var.ado_pipeline_yaml_path_1
   }

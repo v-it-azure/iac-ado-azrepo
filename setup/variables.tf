@@ -9,6 +9,12 @@ variable "ado_github_repo" {
   default     = "v-it-azure/iac-ado-azrepo"
 }
 
+variable "ado_azrepo_name" {
+  type        = string
+  description = "Name of the repository in the format <GitHub Org>/<RepoName>"
+  default     = "iac-projext-repo"
+}
+
 variable "ado_pipeline_yaml_path_1" {
   type        = string
   description = "Path to the yaml for the first pipeline"
