@@ -1,6 +1,7 @@
 variable "ado_org_service_url" {
   type        = string
   description = "Org service url for Azure DevOps"
+  default  = "https://dev.azure.com/v-iac-az/"
 }
 
 variable "ado_github_repo" {
