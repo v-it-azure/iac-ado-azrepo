@@ -22,6 +22,24 @@ resource "azuredevops_project" "project" {
   }
 }
 
+resource "azuredevops_git_repository" "new_repo" {
+  project_id = azuredevops_project.project.id
+  name       = var.ado_azrepo_name
+  initialization {
+    init_type = "Clean" # Options: Uninitialized, Clean, or Import
+  }
+}
+
+resource "azuredevops_git_repository" "existing_repo" {
+  project_id = azuredevops_project.project.id
+  name       = "Repo Import Test"
+  initialization {
+    init_type = "Import" #Options: Uninitialized, Clean, or Import
+    source_type = "Git" # Type type of the source repository. Used if the init_type is Import.
+    source_url = "https://github.com/v-it-azure/iac-ado-azrepo/" # The URL of the source repository. Used if the init_type is Import.
+  }
+ }
+
 resource "azuredevops_serviceendpoint_github" "serviceendpoint_github" {
   project_id            = azuredevops_project.project.id
   service_endpoint_name = "ado-github"
@@ -66,7 +84,7 @@ resource "azuredevops_build_definition" "pipeline_1" {
   }
 
   repository {
-    repo_type             = "GitHub"
+    repo_type             = "TfsGit"
     repo_id               = var.ado_github_repo
     branch_name           = "main"
     yml_path              = var.ado_pipeline_yaml_path_1
