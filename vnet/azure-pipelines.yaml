@@ -1,7 +1,7 @@
 # Azure DevOps pipeline for Azure deployment
 
 variables:
-- group: ado-github
+- group: ado-azrepo
 
 trigger:
   branches:
