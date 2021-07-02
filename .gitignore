@@ -1,0 +1,33 @@
+# Configuration - never check in credentials!
+*.conf
+.env
+.env.dev
+local.auto.tfvars
+
+# Terraform - state and plan files
+.terraform/
+*.tfplan
+*.tfstate
+*.tfstate.*
+*.backend.hcl
+
+# Debugging
+debug.azcli
+
+# Node.js for autogenerating change logs
+node_modules/
+
+# Mac OS
+.DS_Store
+
+# From template: Visual Studio
+.vs/
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspscc
+*.vssscc
+.builds
+.localhistory/
+
